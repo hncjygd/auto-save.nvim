@@ -154,6 +154,10 @@ end
 
 function M.setup(custom_opts)
 	cnf:set_options(custom_opts)
+
+    if require("auto-save.config").opts.enabled then
+        require("auto-save").on()
+    end
 end
 
 return M
