@@ -33,7 +33,7 @@ Config = {
         debounce_delay = 135, -- saves the file at most every `debounce_delay` milliseconds
         -- disable auto-save in the specified files patterns
         -- this feature uses Lua's regexp
-        disabled_patterns = nil, -- need a string such as ".*lua"
+        disabled_patterns = nil, -- need a table with string such as { ".*lua" }
         trigger_events = { "InsertLeave", "TextChanged" }, -- vim events that trigger auto-save. See :h events
         write_all_buffers = false, -- write all buffers when the current one meets `condition`
     },
