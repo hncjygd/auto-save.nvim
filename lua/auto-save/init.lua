@@ -110,6 +110,14 @@ local save_func = (
 )
 
 local function perform_save()
+    local file_name = api.nvim_buf_get_name(0)
+    local disabled_patterns = cnf.opts.disabled_patterns
+    if type(disabled_patterns) == "string" then
+        if string.match(file_name, disabled_patterns) then
+            return
+        end
+    end
+
     g.auto_save_abort = false
     save_func()
 end
@@ -182,8 +190,8 @@ end
 function M.setup(custom_opts)
     cnf:set_options(custom_opts)
 
-    if require("auto-save.config").opts.enabled then
-        require("auto-save").on()
+    if cnf.opts.enabled then
+        M.on()
     end
 end
 
